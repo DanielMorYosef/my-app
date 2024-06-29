@@ -5,9 +5,6 @@ Features
 User authentication and role-based access control to Create,Like , View, Edit, and Delete business cards on all pages support search function (Home, MyCards, FavCards) Like and favorite cards.
 
 
-Clone the repository:
-https://github.com/your-username/crm-card-management.git
-
 Navigating through the app while-
 Not Logged In: Home, About, Search, Dark Mode, Login, Registration
 Logged In (Regular User): Home, About, Favorites Cards, Search, Dark Mode
