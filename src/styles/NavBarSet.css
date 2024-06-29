@@ -1,0 +1,26 @@
+.wrapperBtn {
+  height: 35px;
+  width: 50px;
+  margin: auto;
+  margin-left: 5px;
+}
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  transition: opacity 1s ease, transform 1s ease;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.hidden {
+  opacity: 0;
+  transform: scale(0.8) 1s ease;
+  pointer-events: none;
+}
+.nav-cont {
+  box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.2);
+}
