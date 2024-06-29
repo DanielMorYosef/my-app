@@ -9,6 +9,8 @@ import { UserContext } from "../contexts/UserContext";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import "./module.css";
+import { ToastContainer, Bounce, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const FavCards = ({ searchQuery }) => {
   const { favCards, setFavCards, isAdmin } = useContext(UserContext);
@@ -43,7 +45,17 @@ const FavCards = ({ searchQuery }) => {
         {},
         header
       );
-
+      toast.success("Card Unliked Successfuly", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
       setFavCards((prevCards) => {
         return prevCards.map((card) => {
           if (card._id === cardId) {
@@ -59,7 +71,17 @@ const FavCards = ({ searchQuery }) => {
         });
       });
     } catch (err) {
-      console.error("Error liking card:", err);
+      toast.error("Error Unliking card", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
     } finally {
       setLoading(false);
     }
@@ -115,11 +137,30 @@ const FavCards = ({ searchQuery }) => {
         setFavCards((prevCards) =>
           prevCards.filter((card) => card._id !== cardId)
         );
-      } else {
-        console.error("Failed to delete card");
+        toast.success("Card Deleted Successfully", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
       }
     } catch (err) {
-      console.error("Error deleting card:", err);
+      toast.error("Failed to Delete Card", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
     }
   };
   const [formData, setFormData] = useState({
@@ -205,9 +246,30 @@ const FavCards = ({ searchQuery }) => {
           card._id === cardId && card.liked ? response.data : card
         )
       );
+      toast.success("Card Edited Successfuly", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
       setFormPopup(false);
     } catch (err) {
-      console.error("Error editing card:", err);
+      toast.error("Error editing card", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
     }
   };
 

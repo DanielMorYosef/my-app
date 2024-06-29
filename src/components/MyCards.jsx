@@ -10,6 +10,8 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import { ToastContainer, Bounce, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const MyCards = ({ searchQuery }) => {
   const { userID } = useContext(UserContext);
@@ -99,10 +101,32 @@ const MyCards = ({ searchQuery }) => {
         },
       });
       setFormShown(false);
+      toast.success("Card Created Successfuly", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
       setMyCards((prevCards) =>
         [...prevCards, response.data].filter((card) => card.user_id === userID)
       );
     } catch (error) {
+      toast.error("Failed to create card", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
       console.error(
         "Error:",
         error.response ? error.response.data : error.message
@@ -199,7 +223,6 @@ const MyCards = ({ searchQuery }) => {
         {},
         header
       );
-
       setMyCards((prevCards) => {
         return prevCards.map((card) => {
           if (card._id === cardId) {
@@ -207,6 +230,20 @@ const MyCards = ({ searchQuery }) => {
             const updatedLikes = isLiked
               ? card.likes.filter((id) => id !== userID)
               : [...card.likes, userID];
+            toast.success(
+              isLiked ? "Card unliked successfully" : "Card liked successfully",
+              {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+              }
+            );
             return {
               ...card,
               likes: updatedLikes,
@@ -217,7 +254,17 @@ const MyCards = ({ searchQuery }) => {
         });
       });
     } catch (err) {
-      console.error("Error liking card:", err);
+      toast.error("Failed to Like Card", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
     }
   };
 
@@ -245,11 +292,30 @@ const MyCards = ({ searchQuery }) => {
         setMyCards((prevCards) =>
           prevCards.filter((card) => card._id !== cardId)
         );
-      } else {
-        console.error("Failed to delete card");
+        toast.success("Card Deleted Successfuly", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
       }
     } catch (err) {
-      console.error("Error deleting card:", err);
+      toast.error("Failed to Delete Card", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
     }
   };
 
@@ -299,8 +365,29 @@ const MyCards = ({ searchQuery }) => {
         )
       );
       setFormPopup(false);
+      toast.success("Card Edited Successfuly", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
     } catch (err) {
-      console.error("Error editing card:", err);
+      toast.error("Failed to Edit Card", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
     }
   };
 
