@@ -379,7 +379,7 @@ const FavCards = ({ searchQuery }) => {
                   {formpopup && (
                     <div className="popup">
                       <div className="popup-inner">
-                        <div id="bitch">
+                        <div id="close-btn">
                           <button
                             className="close-btn"
                             style={{ marginLeft: "auto" }}
@@ -602,7 +602,7 @@ const FavCards = ({ searchQuery }) => {
       {showPopup && selectedCard && (
         <div className="popup">
           <div className="popup-inner">
-            <div id="bitch">
+            <div id="close-btn">
               <button
                 className="close-btn"
                 style={{ marginLeft: "auto" }}
